@@ -473,7 +473,7 @@ func (v *visitor) BuiltinNode(node *ast.BuiltinNode) reflect.Type {
 		}
 		return v.error(node.Arguments[1], "closure should has one input and one output param")
 
-	case "filter":
+	case "filter", "|":
 		collection := v.visit(node.Arguments[0])
 		if !isArray(collection) {
 			return v.error(node.Arguments[0], "builtin %v takes only array (got %v)", node.Name, collection)
